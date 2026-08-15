@@ -760,8 +760,8 @@ void render_about()
     ImGui::Separator();
     ImGui::Spacing();
 
-    ImGui::TextWrapped("Version: 1.0.4");
-    ImGui::TextWrapped("Supported Game Version: 1.59");
+    ImGui::TextWrapped("Version: 1.0.5");
+    ImGui::TextWrapped("Supported Game Version: 1.60");
     ImGui::TextWrapped("Author: Baldy09");
 
     ImGui::Spacing(); ImGui::Spacing();
@@ -1139,7 +1139,7 @@ SCSAPI_RESULT scs_telemetry_init(const scs_u32_t version, const scs_telemetry_in
     scs_log(0, "Found pointer to 'prism::game_ctrl' at: %p", game_ctrl_ptr);
 
 
-    uintptr_t game_actor_offset_instruction = bmem::patternScan("48 8B 89 ?? ?? ?? ?? 48 8B DA 48 85 C9 74 ?? 48 8B 49");
+    uintptr_t game_actor_offset_instruction = bmem::patternScan("4C 8B 81 ?? ?? ?? ?? 48 8B DA 4C 8B F1");
     game_actor_offset = *reinterpret_cast<uint32_t*>(game_actor_offset_instruction + 3);
     scs_log(0, "Found 'game_ctrl->game_actor' offset ('%d')", game_actor_offset);
     scs_log(0, "Found pointer to 'prism::game_actor' at: %p", *(uint8_t**)game_ctrl_ptr + game_actor_offset);
